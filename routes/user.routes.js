@@ -3,7 +3,10 @@ import {
   handleSignUp,
   handleSignIn,
   handleLogout,
+  getProfile,
+  updateProfile,
 } from "../controllers/user.controller.js";
+import { isAuthenticated } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
@@ -17,5 +20,9 @@ router.post("/signin", handleSignIn);
 
 // Logout route
 router.get("/logout", handleLogout);
+
+// Profile routes
+router.get("/profile", isAuthenticated, getProfile);
+router.post("/profile", isAuthenticated, updateProfile);
 
 export default router;

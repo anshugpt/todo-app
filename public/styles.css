@@ -1,0 +1,111 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f8fb;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(52, 152, 219, 0.08);
+}
+
+h2, h3 {
+  color: #2d3e50;
+  margin-bottom: 16px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 16px 0;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 16px;
+  background: #f9fbfc;
+  transition: border 0.2s;
+}
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+  border: 1.5px solid #3498db;
+  outline: none;
+}
+
+button {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #217dbb;
+}
+
+.logout-link, .back-link {
+  text-align: right;
+  margin-bottom: 10px;
+}
+.logout-link a, .back-link a {
+  color: #3498db;
+  text-decoration: none;
+  margin-left: 8px;
+  font-weight: 500;
+}
+.logout-link a:hover, .back-link a:hover {
+  text-decoration: underline;
+}
+
+.todo-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.todo-form input[type="text"] {
+  flex: 1;
+  margin: 0;
+}
+.todo-form button {
+  padding: 0 18px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  background: #f9fbfc;
+  margin: 8px 0;
+  padding: 12px 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(52, 152, 219, 0.03);
+}
+.actions button {
+  margin-left: 8px;
+  background: #e74c3c;
+}
+.actions button[type="submit"] {
+  background: #27ae60;
+}
+.actions button[type="submit"]:hover {
+  background: #219150;
+}
+@media (max-width: 700px) {
+  .container {
+    max-width: 98vw;
+    padding: 18px 4vw;
+  }
+  h2, h3 {
+    font-size: 1.3em;
+  }
+} 

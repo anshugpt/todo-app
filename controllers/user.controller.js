@@ -95,3 +95,24 @@ export const handleLogout = asyncHandler(async (req, res) => {
   // Redirect to sign in page
   res.redirect("/user/signin");
 });
+
+// View user profile
+export const getProfile = asyncHandler(async (req, res) => {
+  res.render("profile", {
+    username: req.user.username,
+    fullName: req.user.fullName,
+    email: req.user.email,
+  });
+});
+
+// Update user profile
+export const updateProfile = asyncHandler(async (req, res) => {
+  const { fullName, email } = req.body;
+  if (!fullName?.trim() || !email?.trim()) {
+    throw new ApiError(400, "Full name and email are required");
+  }
+  req.user.fullName = fullName.trim();
+  req.user.email = email.trim();
+  await req.user.save();
+  res.redirect("/profile");
+});
