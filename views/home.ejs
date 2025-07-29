@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome <%= username %> | Todo App</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+        h2 { color: #333; }
+        .todo-form input[type="text"] { width: 70%; padding: 8px; }
+        .todo-form button { padding: 8px 16px; }
+        ul { list-style: none; padding: 0; }
+        li { background: #f9f9f9; margin: 8px 0; padding: 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+        .actions button { margin-left: 8px; }
+        .logout-link { text-align: right; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logout-link">
+            <a href="/user/logout" style="color:#e74c3c;">Logout</a>
+        </div>
+        <h2>Welcome, <%= fullName %>!</h2>
+        <p>Your email: <%= email %></p>
+        <hr>
+        <h3>Your Todos</h3>
+        <form class="todo-form" action="/todos/add" method="POST">
+            <input type="text" name="todo" placeholder="Add a new todo..." required>
+            <button type="submit">Add</button>
+        </form>
+        <ul>
+            <% if (typeof todos !== "undefined" && todos.length > 0) { %>
+                <% todos.forEach(function(todo) { %>
+                    <li>
+                        <form action="/todos/update/<%= todo._id %>" method="POST" style="display:inline;">
+                            <input type="text" name="todo" value="<%= todo.text %>" required>
+                            <div class="actions">
+                                <button type="submit">Update</button>
+                                <form action="/todos/delete/<%= todo._id %>" method="POST" style="display:inline;">
+                                    <button type="submit" style="background:#e74c3c;color:#fff;">Delete</button>
+                                </form>
+                            </div>
+                        </form>
+                    </li>
+                <% }); %>
+            <% } else { %>
+                <li>No todos yet. Start by adding one!</li>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>
