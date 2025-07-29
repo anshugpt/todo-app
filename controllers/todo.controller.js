@@ -30,10 +30,14 @@ export const updateTodo = asyncHandler(async (req, res) => {
   if (!todo || !todo.trim()) {
     throw new ApiError(400, "Todo text is required");
   }
-  const updated = await Todo.findOneAndUpdate(
+  const updatedTodo = await Todo.findOneAndUpdate(
     { _id: id, user: req.user._id },
-    { text: todo.trim() },
-    { new: true }
+    { $set: { text: todo.trim() } },
+    {
+      new: true,
+      runValidators: true,
+      context: 'query'
+    }
   );
   if (!updated) throw new ApiError(404, "Todo not found");
   res.redirect("/");
