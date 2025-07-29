@@ -6,7 +6,7 @@ import {
   getProfile,
   updateProfile,
 } from "../controllers/user.controller.js";
-import { isAuthenticated } from "../middleware/auth.middleware.js";
+import { isAuthenticated } from "../middleware/auth.js";
 
 const router = express.Router();
 

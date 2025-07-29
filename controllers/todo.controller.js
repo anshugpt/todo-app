@@ -39,7 +39,7 @@ export const updateTodo = asyncHandler(async (req, res) => {
       context: 'query'
     }
   );
-  if (!updated) throw new ApiError(404, "Todo not found");
+  if (!updatedTodo) throw new ApiError(404, "Todo not found");
   res.redirect("/");
 });
 
